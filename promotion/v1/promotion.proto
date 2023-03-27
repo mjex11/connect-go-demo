@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package promotion.v1;
+
+option go_package = "promotion/gen/promotion/v1;promotionv1";
+
+message GetPointBlanceRequest {
+  int64 member_id = 1;
+}
+
+message GetPointBlanceResponse {
+  int64 point = 1;
+}
+
+message GivePointBlanceRequest {
+  int64 member_id = 1;
+  int64 point = 2;
+  string reason = 3;
+}
+
+message GivePointBlanceResponse {
+    int64 point = 1;
+  }
+  
+message TakePointBlanceRequest {
+  int64 member_id = 1;
+  int64 point = 2;
+  string reason = 3;
+}
+
+message TakePointBlanceResponse {
+  int64 point = 1;
+}
+
+service PromotionService {
+  rpc GetPointBlance(GetPointBlanceRequest) returns (GetPointBlanceResponse) {}
+  rpc GivePointBlance(GivePointBlanceRequest) returns (GivePointBlanceResponse) {}
+  rpc TakePointBlance(TakePointBlanceRequest) returns (TakePointBlanceResponse) {}
+}
